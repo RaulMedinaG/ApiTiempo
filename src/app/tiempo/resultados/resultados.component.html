@@ -1,0 +1,36 @@
+<div class="w-100 d-flex justify-content-center flex-column align-items-center">
+    <h1>Detalles del Tiempo:</h1>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+        <strong>No has introducido una búsqueda correcta</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="general card bg-secondary bg-gradient bg-opacity-25 mt-3" *ngIf="getCiudades">
+        <div class="d-flex justify-content-between ms-4 me-4 mt-3">
+            <h6 class="texto">{{getCiudades.name}} (Latitud: {{getCiudades.coord.lat}} - Longitud: {{getCiudades.coord.lon}})</h6><h6>{{mayus(getCiudades.weather[0].description)}}</h6>
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-4">
+            <h1 class="display-2">{{convertirTemp(getCiudades.main.temp)}}ºC</h1>
+        </div>
+        <div class="d-flex justify-content-center align-items-center flex-column text-black-50">
+            <p>Mínima: {{convertirTemp(getCiudades.main.temp_min)}}ºC - Máxima:{{convertirTemp(getCiudades.main.temp_max)}}ºC</p>
+            <span>Sensación Térmica: {{convertirTemp(getCiudades.main.feels_like)}}ºC</span>
+        </div>
+        <div class="d-flex justify-content-between ms-4 me-4 mt-3 text-black-50">
+            <div class="d-flex flex-column">
+                <p class="text-black-50"><i class="bi bi-wind"></i> {{getCiudades.wind.speed}}km/h ({{getCiudades.wind.deg}}º)</p>
+                <p class="text-black-50">Humedad: {{getCiudades.main.humidity}}%</p>
+                <p class="text-black-50">Presión: {{getCiudades.main.pressure}}Pa</p>
+            </div>
+            <img src="http://openweathermap.org/img/wn/{{getCiudades.weather[0].icon}}@2x.png" width="15%" height="15%" alt="">
+        </div>
+        <div class="d-flex justify-content-center align-items-center mt-1 mb-3">
+            <button class="cta d-flex justify-content-center align-items-center mt-2 mb-3">
+                <a [routerLink]="['/informacionDetallada',getCiudades.name]"><span>Ver Detalles</span></a>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

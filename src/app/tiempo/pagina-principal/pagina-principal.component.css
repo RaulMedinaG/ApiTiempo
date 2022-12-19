@@ -1,0 +1,53 @@
+@media screen and (max-width: 1920px) {
+
+    .general{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 5px;
+    }
+    
+}
+
+@media screen and (max-width: 1440px) {
+
+    .general{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 5px;
+    }
+    
+}
+
+@media screen and (max-width: 1024px) {
+
+    .general{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 5px;
+        font-size: small;
+    }   
+    
+}
+
+@media screen and (max-width: 768px) {
+
+    .general{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 5px;
+        font-size:small;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .general{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-size:small;
+    }
+
+}

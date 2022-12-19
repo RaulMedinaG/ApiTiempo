@@ -1,0 +1,45 @@
+<div class="general d-flex justify-content-center flex-column align-items-center w-100">
+    <h1 class="mt-3 mb-3">Detalles del Tiempo</h1>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error2">
+        <strong>No has introducido una búsqueda correcta</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="tabla">
+        <table class="table">
+            <thead class="text-center">
+              <tr>
+                <th scope="col">Dia</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Temperatura</th>
+                <th scope="col">Viento</th>
+                <th scope="col">Prob. de precip.</th>
+                <th scope="col">Nubes</th>
+                <th scope="col">Favs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center" *ngFor="let detalle of ciudad">
+                <th scope="row">{{cogerDia(detalle.dt_txt)}}</th>
+                <td>{{cogerHora(detalle.dt_txt)}}</td>
+                <td><img src="http://openweathermap.org/img/wn/{{detalle.weather[0].icon}}@2x.png" width="25%" height="25%" alt=""></td>
+                <td>{{convertirTemp(detalle.main.temp)}}º</td>
+                <td><i class="bi bi-wind"></i> {{detalle.wind.speed}} km/h</td>
+                <td>{{propbabilidadLluvia(detalle.pop)}} %</td>
+                <td>{{detalle.clouds.all}} %</td>
+                <td>
+                    <div class="d-flex justify-content-center align-items-center mt-1 mb-3">
+                        <button (click)="aniadirFavs(detalle)" class="cta d-flex justify-content-center align-items-center">
+                            <span>Favs</span>
+                            <svg viewBox="0 0 13 10" height="10px" width="15px">
+                              <path d="M1,5 L11,5"></path>
+                              <polyline points="8 1 12 5 8 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
